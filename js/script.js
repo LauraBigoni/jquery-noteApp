@@ -3,6 +3,9 @@ const ckEditor = {
   editorInstance: {}
 };
 
+// Creo un timeout NULL che mi servirà poi per le chiamate in PUT
+let timeout = null;
+
 $(document).ready(function () {
   console.log("JQuery OK");
 
@@ -206,5 +209,12 @@ function updateNote() {
     title: $('.note-editor__title').val(),
   };
 
-  saveNote(note);
+  clearTimeout(timeout);
+
+  // Imposto un timeot per non fare troppe chiamate API in PUT
+  timeout = setTimeout(function () {
+    console.log('timeout', timeout);
+    saveNote(note);
+  }, 1000);
+  console.log(timeout);
 }
