@@ -91,4 +91,22 @@ function printNotes(data, year) {
 function firstNote(note) {
   const firstNote = $('.notes-menu__year:first-child .notes-menu__list__item:first-child ')
   firstNote.addClass('active');
+
+  // Faccio una chiamata Ajax per id
+  getNote(firstNote.data('id'));
+}
+
+// Chiamata Ajax per ID singola nota
+function getNote(id) {
+  const endPoint = 'https://62b1dd0920cad3685c84c611.mockapi.io/notes/' + id;
+  $.ajax({
+    method: "GET",
+    url: endPoint,
+    success: function (data) {
+      console.log(data);
+    },
+    error: function (err) {
+      console.log(err);
+    }
+  });
 }
