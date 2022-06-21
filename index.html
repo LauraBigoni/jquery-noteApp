@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--daysJs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"
+    integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/locale/it.min.js"
+    integrity="sha512-phkVsg58Vew4wUU/r26xmmcziH8AaEgdySp+pUdGUQerHGrK1jaqXCDI7/ezobI2jBqu6vMTV0CTwQrKNbEMNw=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/plugin/utc.min.js"
+    integrity="sha512-m00bfmYnAl3plEBlQfeQUhw/U2uvmw29V2+jxSWpAjankMWS+zAsjezbKWDEJNXqWq9o9qQZSOiA2RKDpa4D5w=="
+    crossorigin="anonymous"></script>
+  <!--/daysJs -->
+
+  <!--handlebars-->
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+  <!--JQuery-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous"></script>
+
+  <!--CKEditor-->
+  <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
+
+  <!--Fonts-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <title>NoteApp</title>
+</head>
+
+<body>
+  <main class="main">
+    <section class="notes-menu">
+      <header class="notes-menu__header">
+        <div class="header__top">
+          <h1>
+            <svg width="16" height="18" fill="none" xmlns="http://www.w3.org/2000/svg"
+              class="_3Gq1JIxImlNOSmuHL_jSBi _3AQ5sfB8hDAABrTrpbYj2N _2QDCbaTVBsQpjP9NClDgyc">
+              <path d="M3.242 0H.75v18h2.492V0z" fill="currentColor"></path>
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M4.742 0v18h8.508a2 2 0 002-2V2a2 2 0 00-2-2H4.742zm7.955 6.1a.9.9 0 01-.9.9h-3.6a.9.9 0 110-1.8h3.6a.9.9 0 01.9.9z"
+                fill="currentColor"></path>
+            </svg>
+            Laura's notes
+          </h1>
+        </div>
+        <div class="header__bottom">
+          <p class="notes-menu__number">2 Note</p>
+          <ul class="notes-menu__icons">
+            <li><a class="btn--svg" id="sort" href="#">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M8.183 4.625a.625.625 0 00-1.25 0V17.87L5.067 16a.625.625 0 00-.884 0 .62.62 0 000 .88l2.933 2.94c.244.244.64.244.884 0l2.933-2.94a.62.62 0 000-.88.625.625 0 00-.884 0l-1.866 1.87V4.625zM11.625 5a.625.625 0 100 1.25h8.75a.625.625 0 100-1.25h-8.75zM11 9.375c0-.345.28-.625.625-.625h6.25a.625.625 0 110 1.25h-6.25A.625.625 0 0111 9.375zM11.625 12.5a.625.625 0 100 1.25h3.75a.625.625 0 100-1.25h-3.75z"
+                    fill="currentColor"></path>
+                </svg>
+              </a></li>
+            <li><a class="btn--svg" id="layout" href="#">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M12.375 8.925V5.25H6a.75.75 0 00-.75.75v2.925h7.125zm0 1.25H5.25v3.65h7.125v-3.65zm0 4.9H5.25V18c0 .414.336.75.75.75h6.375v-3.675zM6 20a2 2 0 01-2-2V6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6zm7.625-14.75H18a.75.75 0 01.75.75v12a.75.75 0 01-.75.75h-4.375V5.25z"
+                    fill="currentColor"></path>
+                </svg>
+              </a></li>
+            <li><a class="btn--svg" href="#">
+                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" id="qa-NOTELIST_SUBHEADER_ACTIONS"
+                  class="_2hOozI1nBOe0Iwq14eLL-O">
+                  <path
+                    d="M4.5 12a1.5 1.5 0 103 0 1.5 1.5 0 00-3 0zm7.501 1.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm6 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3z">
+                  </path>
+                </svg>
+              </a></li>
+          </ul>
+        </div>
+      </header>
+      <div class="notes-menu__main">
+        <div id="list__header">
+          <span class="title">Titolo</span>
+          <span class="date">Data Aggiornamento</span>
+        </div>
+        <div class="notes__container">
+        </div>
+      </div>
+    </section>
+
+    <section class="note-editor">
+      <header class="note-editor__header">
+        <div class="note-editor__header-top">
+          <ul class="note-editor__menu note-editor__menu--notepad list--none">
+            <li><a class="btn--svg" href="#">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+                  <path fill-rule="evenodd"
+                    d="M6.031 3a3 3 0 00-3 3v11a3 3 0 003 3h11a3 3 0 003-3V6a3 3 0 00-3-3h-11zm4.47 4.289H8.184l2.915 2.914a.625.625 0 01-.884.884L7.3 8.172v2.319a.625.625 0 11-1.25 0V6.674c0-.351.285-.635.635-.635h3.818a.625.625 0 010 1.25zM12.6 15.76h2.318l-2.915-2.915a.625.625 0 11.884-.884l2.915 2.915V12.56a.625.625 0 011.25 0v3.817c0 .35-.285.635-.635.635H12.6a.625.625 0 110-1.25z">
+                  </path>
+                </svg>
+              </a></li>
+            <li>
+              <svg width="16" height="18" fill="none" xmlns="http://www.w3.org/2000/svg"
+                class="_3Gq1JIxImlNOSmuHL_jSBi _3AQ5sfB8hDAABrTrpbYj2N _2QDCbaTVBsQpjP9NClDgyc">
+                <path d="M3.242 0H.75v18h2.492V0z" fill="currentColor"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M4.742 0v18h8.508a2 2 0 002-2V2a2 2 0 00-2-2H4.742zm7.955 6.1a.9.9 0 01-.9.9h-3.6a.9.9 0 110-1.8h3.6a.9.9 0 01.9.9z"
+                  fill="currentColor"></path>
+              </svg>
+              <span> Laura's notes</span>
+            </li>
+          </ul>
+          <ul class="note-editor__menu note-editor__menu--share list--none">
+            <li><a class="btn">Condividi</a></li>
+            <li><a class="btn--svg" href="#">
+                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" id="qa-NOTE_ACTIONS"
+                  class="_2hOozI1nBOe0Iwq14eLL-O">
+                  <path
+                    d="M4.5 12a1.5 1.5 0 103 0 1.5 1.5 0 00-3 0zm7.501 1.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm6 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3z">
+                  </path>
+                </svg>
+              </a></li>
+          </ul>
+        </div>
+        <div class="note-editor__header-bottom">
+          <p>Ultima modifica: <span class="date">...</span></p>
+        </div>
+      </header>
+
+      <div class="note-editor__main">
+        <input class="note-editor__title" value="Titolo">
+        <div id="editor">
+        </div>
+      </div>
+
+      <footer class="note-editor__footer">
+        <ul class="note-editor__footer__menu list--none">
+          <li><a class="btn--svg" href="#">
+              <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" id="qa-CREATE_REMINDER_BTN"
+                class="_1TaQ6wOzw2MBX_mYb0asGX">
+                <path
+                  d="M12 2.498a1.714 1.714 0 00-1.699 1.944 5.336 5.336 0 00-4.006 5.167v2.625c0 .335-.087.665-.253.957l-1.813 3.185a1.365 1.365 0 001.136 2.122h8.398a5.503 5.503 0 014.553-4.678l-.358-.629a1.936 1.936 0 01-.254-.947V9.61A5.335 5.335 0 0013.7 4.442 1.714 1.714 0 0012 2.498zm1.763 17.5c.052.38.143.747.268 1.099a2.72 2.72 0 01-2.031.9c-1.265 0-2.327-.85-2.621-2h4.384zm6.199-3.744a.75.75 0 00-1.5 0v2.285h-2.216a.75.75 0 000 1.5h2.216v2.215a.75.75 0 001.5 0V20.04h2.284a.75.75 0 000-1.5h-2.284v-2.285z"
+                  fill="currentColor"></path>
+              </svg>
+            </a></li>
+          <li><a class="btn--svg" href="#">
+              <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg" id="qa-ADD_TAG_BTN"
+                class="Oc6nCWhr9SqKlLaW28JvU _3lmhrOwkNXh_KLyL07gFVd" tabindex="0">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M5 10.7a2 2 0 01.442-1.255l5-6.21a2 2 0 013.116 0l5 6.21A2 2 0 0119 10.699v3.052a5.5 5.5 0 00-5.002 7.238H7a2 2 0 01-2-2V10.7zm9-.654a1.999 1.999 0 01-2 1.998 1.999 1.999 0 112-1.998z"
+                  fill="currentColor"></path>
+                <path
+                  d="M19.965 16.254a.75.75 0 00-1.5 0v2.285H16.25a.75.75 0 000 1.5h2.215v2.215a.75.75 0 001.5 0V20.04h2.285a.75.75 0 000-1.5h-2.285v-2.285z"
+                  fill="currentColor"></path>
+              </svg>
+            </a></li>
+        </ul>
+        <div class="footer__message">Tutte le modifiche sono state salvate</div>
+      </footer>
+    </section>
+  </main>
+
+  <!--Sort-->
+  <div class="dropdown" data-id="sort">
+    <ul class="dropdown__list">
+      <li class="dropdown__list__item active">
+        <a href="#" data-order="asc" class="btn--svg"><img src="images/order.svg" alt=""></a>
+        <a data-sort="updatedAt" class="btn--text" href="#">Data di aggiornamento</a>
+      </li>
+      <li class="dropdown__list__item">
+        <a href="#" data-order="asc" class="btn--svg "><img src="images/order.svg" alt=""></a>
+        <a data-sort="createdAt" class="btn--text" href="#">Data di creazione</a>
+      </li>
+    </ul>
+  </div>
+  <!--/Sort-->
+
+  <!--Filter-->
+  <div class="dropdown" data-id="filter">
+    <ul class="dropdown__list">
+      <li class="dropdown__list__item">Lorem.</li>
+      <li class="dropdown__list__item">Lorem.</li>
+      <li class="dropdown__list__item">Lorem.</li>
+    </ul>
+  </div>
+  <!--Filter-->
+
+  <!--Layout-->
+  <div class="dropdown" data-id="layout">
+    <h3 class="dropdown__title">Visualizzazione note</h3>
+    <ul class="dropdown__list">
+      <li class="dropdown__list__item active" data-layout="fragment"><span class="btn--svg"><svg width="24" height="24"
+            viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M12.375 8.925V5.25H6a.75.75 0 00-.75.75v2.925h7.125zm0 1.25H5.25v3.65h7.125v-3.65zm0 4.9H5.25V18c0 .414.336.75.75.75h6.375v-3.675zM6 20a2 2 0 01-2-2V6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6zm7.625-14.75H18a.75.75 0 01.75.75v12a.75.75 0 01-.75.75h-4.375V5.25z"
+              fill="currentColor"></path>
+          </svg></span><span class="btn--text">Frammenti</span></li>
+      <li class="dropdown__list__item" data-layout="list"><span class="btn--svg"><svg width="24" height="24"
+            viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M12.375 6.95v-1.7H6a.75.75 0 00-.75.75v.95h7.125zm0 1.25H5.25v1.705h7.125V8.2zm0 2.955H5.25v1.7h7.125v-1.7zm0 2.95H5.25v1.7h7.125v-1.7zm0 2.95H5.25V18c0 .414.336.75.75.75h6.375v-1.695zM6 20a2 2 0 01-2-2V6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6zm7.625-14.75H18a.75.75 0 01.75.75v12a.75.75 0 01-.75.75h-4.375V5.25z"
+              fill="currentColor"></path>
+          </svg></span><span class="btn--text">Elenco laterale</span></li>
+    </ul>
+  </div>
+  <!--/Layout-->
+
+  <!--Template Handlebars-->
+  <script id="note-year" type="text/x-handlebars-template">
+    <section class="year{{year}}">
+        <h2 class="notes-menu__title-date">{{year}}</h2>
+        <ul class="notes-menu__list list--none">
+        </ul>
+    </section>
+</script>
+  <script id="note-list-template" type="text/x-handlebars-template">
+    <li class="notes-menu__list__item" data-id="{{id}}">
+        <h3 class="title">{{title}}</h3>
+        <p class="text">{{text}}</p>
+        <p class="date">{{updatedAt}}</p>
+    </li>
+</script>
+  <!-- /Template Handlebars-->
+
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>

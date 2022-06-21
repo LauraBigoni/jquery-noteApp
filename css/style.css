@@ -1,0 +1,363 @@
+/*Variables*/
+:root {
+  --padding: 20px;
+  --fontH1Menu: #333;
+  --fontColorMenu: #a6a6a6;
+  --fontColorDark: #636363;
+  --bgGray: #F8F8F8;
+  --bgGrayLight: #faf9f9;
+  --bgDarkGray: #d2d2d2;
+  --btnBgGray: #f2f2f2;
+  --border: #e6e6e6;
+  --active-color: #026FAC;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  min-width: 780px;
+}
+
+.list--none {
+  list-style-type: none;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #33ab33;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus {
+  background-color: #1b5d1b;
+}
+
+.btn--svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.btn--svg svg {
+  color: var(--fontColorMenu);
+  fill: var(--fontColorMenu);
+}
+
+.btn--svg:hover svg,
+.btn--svg:focus svg,
+.btn--svg:active svg {
+  color: black;
+  fill: black;
+}
+
+.btn--svg:hover,
+.btn--svg:focus,
+.btn--svg:active {
+  background-color: var(--btnBgGray);
+}
+
+.btn--svg.rotate {
+  transform: rotate(180deg);
+}
+
+/*DROPDOWN*/
+.dropdown {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 200px;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown.active {
+  display: block;
+}
+
+.dropdown__title {
+  text-transform: uppercase;
+  padding: var(--padding);
+  font-size: 80%;
+  color: var(--fontColorMenu);
+}
+
+.dropdown .dropdown__list {
+  list-style: none;
+}
+
+.dropdown .dropdown__list__item {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  margin: 10px 0;
+}
+
+.dropdown .dropdown__list__item a {
+  margin-left: 5px;
+  text-decoration: none;
+  color: var(--fontColorMenu);
+}
+
+.dropdown .dropdown__list__item:hover {
+  background-color: var(--bgGray);
+}
+
+.dropdown .dropdown__list__item.active a,
+.dropdown .dropdown__list__item.active {
+  color: var(--active-color);
+}
+
+.dropdown .dropdown__list__item.active .btn--svg svg {
+  color: var(--active-color);
+}
+
+/*MAIN*/
+.main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+/*Typo*/
+.notes-menu h1,
+.notes-menu h2,
+.notes-menu h3 {
+  margin-bottom: 15px;
+}
+
+.notes-menu h1,
+.notes-menu h2,
+.notes-menu h3 {
+  color: var(--fontH1Menu);
+}
+
+.notes-menu ul {
+  list-style: none;
+}
+
+/*NOTES MENU*/
+.notes-menu {
+  width: 25%;
+  min-width: 250px;
+  height: 100%;
+  background-color: var(--bgGray);
+  border: 1px solid var(--border);
+  color: var(--fontColorMenu);
+  overflow: hidden;
+}
+
+.notes-menu__header {
+  padding: 10px var(--padding);
+  height: 100px;
+}
+
+.notes-menu .header__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notes-menu main {
+  border-top: 1px solid var(--border);
+  height: calc(100% - 100px);
+  overflow-y: auto;
+}
+
+h2.notes-menu__title-date {
+  margin: 0;
+  padding: var(--padding);
+  font-size: 100%;
+}
+
+.notes-menu__list__item {
+  padding: var(--padding);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.notes-menu__list__item.active {
+  background-color: var(--bgDarkGray);
+  color: var(--fontColorDark);
+}
+
+.notes-menu__list__item p:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.notes-menu__icons {
+  display: flex;
+}
+
+main.list .notes-menu__list__item {
+  display: flex;
+  justify-content: space-between;
+  padding: calc(var(--padding) / 2) var(--padding);
+}
+
+main.list .notes-menu__list__item p.text {
+  display: none;
+}
+
+main.list .notes-menu__list__item .title {
+  font-weight: normal;
+  font-size: 100%;
+  width: 50%;
+}
+
+main.list .notes-menu__list__item .date {
+  padding-left: 10px;
+  width: 50%;
+}
+
+main.list .notes-menu__list__item p.date {
+  color: var(--fontH1Menu);
+}
+
+main.list .notes-menu__title-date {
+  display: none;
+}
+
+#list__header {
+  display: none;
+}
+
+main.list #list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main.list #list__header span {
+  border-right: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  padding: 5px;
+}
+
+main.list #list__header span {
+  font-size: 80%;
+  width: 50%;
+}
+
+main.list #list__header span.title {
+  padding-left: var(--padding);
+}
+
+main.list #list__header span.date {
+  padding-right: var(--padding);
+  padding-left: 10px;
+}
+
+/*NOTE EDITOR*/
+.note-editor {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 75%;
+  height: 100%;
+  border-right: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.note-editor__header {
+  height: 100px;
+  padding: var(--padding);
+  color: var(--fontColorMenu);
+}
+
+.note-editor__header-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.note-editor__header-top .note-editor__menu {
+  display: flex;
+  align-items: center;
+}
+
+.note-editor__menu--notepad>li:not(:last-child) {
+  padding-right: 5px;
+  border-right: 1px solid lightgray;
+}
+
+.note-editor__menu--notepad>li:last-child {
+  padding-left: 10px;
+}
+
+.note-editor__menu--share>li:not(:last-child) {
+  margin-right: 10px;
+}
+
+.note-editor__title {
+  width: 100%;
+  padding: var(--padding);
+  border: 0;
+  font-size: 120%;
+  font-weight: bold;
+}
+
+.note-editor__title:focus-visible,
+.note-editor__title:hover,
+.note-editor__title:focus,
+.note-editor__title:active {
+  border: 0;
+  outline: 0;
+  background-color: var(--bgGrayLight);
+}
+
+/*CK EDITOR*/
+.note-editor__main,
+.ck.ck-editor {
+  flex-grow: 2;
+  border-top: 1px solid var(--border);
+}
+
+.note-editor__main:hover,
+.note-editor__main:hover .ck-content.ck-editor__editable {
+  background-color: var(--bgGrayLight);
+}
+
+.note-editor__main .ck.ck-editor__main>.ck-editor__editable,
+.ck.ck-editor__main>.ck-editor__editable {
+  padding: var(--padding);
+  border-color: transparent;
+}
+
+.ck.ck-editor__main>.ck-editor__editable.ck-focused {
+  box-shadow: none;
+}
+
+.ck.ck-toolbar.ck-toolbar_grouping {
+  border-color: transparent;
+}
+
+/*Footer*/
+.note-editor__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid var(--border);
+  color: gray;
+}
+
+.note-editor__footer__menu {
+  display: flex;
+  align-items: center;
+}
