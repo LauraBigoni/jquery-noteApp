@@ -1,3 +1,8 @@
+// Creo un istanza per ckEditor
+const ckEditor = {
+  editorInstance: {}
+};
+
 $(document).ready(function () {
   console.log("JQuery OK");
 
@@ -103,7 +108,23 @@ function getNote(id) {
     method: "GET",
     url: endPoint,
     success: function (data) {
-      console.log(data);
+      // Formatto la data
+      const updatedAt = dayjs(data.updatedAt).format('DD MMMM YYYY hh:mm:ss');
+      const dateContainer = $('.note-editor__header-bottom .date');
+
+      // Inserisco nell'html la data
+      dateContainer.html(updatedAt);
+
+      // Prendo il titolo
+      const titleContainer = $('.note-editor__title');
+      titleContainer.val(data.title);
+
+      // Prendo l'editor dal DOM
+      const editor = $('#editor');
+      editor.data('id', data.id);
+      editor.html(data.text);
+
+      // Creo un iistanza CKEDITOR
     },
     error: function (err) {
       console.log(err);
