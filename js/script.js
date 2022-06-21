@@ -121,8 +121,8 @@ function printNotes(data, year) {
 }
 
 // Prendo la nota e la attivo
-function firstNote(note) {
-  const firstNote = $('.notes-menu__year:first-child .notes-menu__list__item:first-child ')
+function firstNote() {
+  const firstNote = $('.notes-menu__year:first-child .notes-menu__list .notes-menu__list__item:first-child ')
   firstNote.addClass('active');
 
   // Faccio una chiamata Ajax per id
