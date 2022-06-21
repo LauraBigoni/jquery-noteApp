@@ -11,6 +11,23 @@ $(document).ready(function () {
   dayjs.extend(window.dayjs_plugin_utc);
 
   getAllNotes();
+
+  // Cambia la nota attiva al click di un altra nota
+  $(document).on('click', '.notes-menu__list__item', function () {
+
+    // Se esiste un istanza per quell'id viene distrutta 
+    // e riportato a oggetto vuoto CKEDITOR
+    if (ckEditor.editorInstance.id) {
+      ckEditor.editorInstance.destroy();
+      ckEditor.editorInstance = {};
+    }
+
+    // Tolgo l'active alle altre note e lo metto a quella premuta
+    $(this).addClass('active').sibilings().removeClass('active');
+
+    // Chiamata API per l'id della nota che ho cliccato
+    getNote($(this).data('id'));
+  });
 });
 
 function getAllNotes() {
@@ -125,11 +142,14 @@ function getNote(id) {
       editor.html(data.text);
 
       // Creo un iistanza CKEDITOR
-      ClassicEditor.create(editor[0]).catch(error => {
-        console.log(error);
-      }).then(function () {
-        ckEditor.editorInstance = editor;
-      });
+      ClassicEditor
+        .create(editor[0])
+        .catch(error => {
+          console.log(error);
+        })
+        .then(function () {
+          ckEditor.editorInstance = editor;
+        });
     },
     error: function (err) {
       console.log(err);
