@@ -21,12 +21,23 @@ $(document).ready(function () {
       ckEditor.editorInstance.destroy();
       ckEditor.editorInstance = {};
     }
+    // console.log(this);
 
     // Tolgo l'active alle altre note e lo metto a quella premuta
-    $(this).addClass('active').sibilings().removeClass('active');
+    $(this).addClass('active').siblings().removeClass('active');
 
     // Chiamata API per l'id della nota che ho cliccato
     getNote($(this).data('id'));
+  });
+
+  // Modifico il contenuto mostrato
+  $(document).on('keyup', '.note-editor .ck-editor__main .ck-content', function () {
+    updateNote();
+  });
+
+  // Modifico il titolo mostrato
+  $(document).on('keyup', '.note-editor__title', function () {
+    updateNote();
   });
 });
 
