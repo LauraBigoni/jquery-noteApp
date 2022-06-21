@@ -125,6 +125,11 @@ function getNote(id) {
       editor.html(data.text);
 
       // Creo un iistanza CKEDITOR
+      ClassicEditor.create(editor[0]).catch(error => {
+        console.log(error);
+      }).then(function () {
+        ckEditor.editorInstance = editor;
+      });
     },
     error: function (err) {
       console.log(err);
