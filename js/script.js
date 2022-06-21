@@ -167,3 +167,44 @@ function getNote(id) {
     }
   });
 }
+
+// salvo la nota
+function saveNote(note) {
+  note.updatedAt = dayjs.utc().format();
+
+  const endPoint = 'https://62b1dd0920cad3685c84c611.mockapi.io/notes/' + note.id;
+  $.ajax({
+    method: 'PUT',
+    data: note,
+    url: endPoint,
+    success: function (data) {
+      updateNoteInMenu(data);
+    },
+    error: function (err) {
+      console.log(err);
+    }
+  });
+}
+
+// Aggiorno le note nel menu
+function updateNoteInMenu(data) {
+  const fakeDiv = $('<div></div>').append(data.text);
+  const text = fakeDiv.text().slice(0, 30) + '...';
+
+  $('.notes-menu__list__item.active .title').html(data.title);
+  $('.notes-menu__list__item.active .text').text(text);
+  $('.notes-menu__list__item.active .date').text(dayjs(data.updatedAt).format('DD MMMM YYYY'));
+  $('.note-editor__header-bottom .date').text(dayjs(data.updatedAt).format('DD MMMM YYYY hh:mm:ss'));
+}
+
+// Aggiorno effettivamente le note anche nell'editor
+function updateNote() {
+  // Creo un nuovo oggetto note per aggiornare
+  const note = {
+    id: $('#editor').data('id'),
+    text: $('.note-editor .ck-editor__main .ck-content').html(),
+    title: $('.note-editor__title').val(),
+  };
+
+  saveNote(note);
+}
