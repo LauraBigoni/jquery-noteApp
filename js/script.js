@@ -15,7 +15,9 @@ function getAllNotes() {
     type: "GET",
     url: endPoint,
     success: function (data) {
-      printListNotes(data);
+      if (data.length > 0) {
+        printListNotes(data);
+      }
     },
     error: function (err) {
       console.log(err);
